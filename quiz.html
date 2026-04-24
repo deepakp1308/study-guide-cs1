@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 — Data Representation: Complete Study Guide — Interactive Quiz</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, 'Helvetica Neue', sans-serif;
+    background: #f5f7fa;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+  .header {
+    background: #1a3c5e;
+    color: white;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .header h1 { font-size: 24px; margin-bottom: 4px; }
+  .header p { opacity: 0.8; font-size: 14px; }
+  .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+  .progress-bar {
+    background: #e0e0e0;
+    border-radius: 8px;
+    height: 8px;
+    margin: 20px 0;
+    overflow: hidden;
+  }
+  .progress-fill {
+    background: #2a5f8f;
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 8px;
+  }
+  .score-display {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 16px;
+  }
+  .question-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: none;
+  }
+  .question-card.active { display: block; }
+  .question-card .q-number {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .question-card .q-type {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #1a3c5e;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .question-card .q-text {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .option:hover { border-color: #2a5f8f; background: #f0f4ff; }
+  .option.selected { border-color: #2a5f8f; background: #e8f0fe; }
+  .option.correct { border-color: #2d8a4e; background: #e8f5e9; }
+  .option.wrong { border-color: #c62828; background: #ffebee; }
+  .option:disabled { cursor: default; opacity: 0.85; }
+  .tf-btns { display: flex; gap: 12px; }
+  .tf-btns button {
+    flex: 1;
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: white;
+    transition: all 0.2s;
+  }
+  .tf-btns button:hover { border-color: #2a5f8f; }
+  .tf-btns button.correct { border-color: #2d8a4e; background: #e8f5e9; }
+  .tf-btns button.wrong { border-color: #c62828; background: #ffebee; }
+  .freeform-area {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+  }
+  .explanation {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-left: 3px solid #2a5f8f;
+    border-radius: 4px;
+    font-size: 14px;
+    display: none;
+  }
+  .explanation.show { display: block; }
+  .nav-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  .nav-btns button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-next { background: #2a5f8f; color: white; }
+  .btn-next:hover { background: #1a3c5e; }
+  .btn-reveal { background: #e0e0e0; color: #333; }
+  .btn-reveal:hover { background: #d0d0d0; }
+  .results-card {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: none;
+  }
+  .results-card h2 { font-size: 28px; margin-bottom: 8px; }
+  .results-card .score-big {
+    font-size: 64px;
+    font-weight: 700;
+    color: #2a5f8f;
+    margin: 16px 0;
+  }
+  .results-card .grade { font-size: 18px; margin-bottom: 24px; }
+  .btn-restart {
+    padding: 12px 32px;
+    background: #2a5f8f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Chapter 1 — Data Representation: Complete Study Guide</h1>
+  <p>Interactive Study Quiz</p>
+</div>
+<div class="container">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="score-display" id="scoreDisplay">Question 1 of —</div>
+  <div id="questionsContainer"></div>
+  <div class="results-card" id="resultsCard">
+    <h2>Quiz Complete!</h2>
+    <div class="score-big" id="finalScore">0%</div>
+    <div class="grade" id="gradeText"></div>
+    <button class="btn-restart" onclick="restart()">Try Again</button>
+  </div>
+</div>
+<script>
+const DATA = {"title": "Chapter 1 \u2014 Data Representation: Complete Study Guide", "mcq": [{"id": "term_0", "type": "mcq", "question": "What is the definition of <b>Analogue data</b>?", "options": ["A compression method that permanently removes unnecessary data from the file; reduces quality", "A continuous stream of data, such as what we see, hear, feel, and smell", "The smallest unit of data; a single binary digit (0 or 1)", "A 16-bit character set capable of representing approximately 65,000 characters from many languages and symbols"], "correct": 1, "explanation": "A continuous stream of data, such as what we see, hear, feel, and smell"}, {"id": "term_1", "type": "mcq", "question": "What is the definition of <b>Digital data</b>?", "options": ["Discrete data that has only two values: 1 and 0; also called binary data", "A group of 8 bits", "The smallest unit of data; a single binary digit (0 or 1)", "A lossless compression algorithm for images that groups repeating pixels and stores the colour and count"], "correct": 0, "explanation": "Discrete data that has only two values: 1 and 0; also called binary data"}, {"id": "term_2", "type": "mcq", "question": "What is the definition of <b>Binary</b>?", "options": ["The process of recording sound at set time intervals to convert it into digital data", "The smallest unit of data; a single binary digit (0 or 1)", "A compression method that reduces file size without permanently removing any data; the original can be perfectly recreated", "A base-2 number system using only the digits 0 and 1"], "correct": 3, "explanation": "A base-2 number system using only the digits 0 and 1"}, {"id": "term_3", "type": "mcq", "question": "What is the definition of <b>Denary</b>?", "options": ["A defined list of characters recognised by a computer, where each character is assigned a unique binary code", "The smallest unit of data; a single binary digit (0 or 1)", "A base-10 number system using the digits 0 to 9; the number system used in everyday life", "A small, fast storage location inside the CPU where binary data is stored and processed"], "correct": 2, "explanation": "A base-10 number system using the digits 0 to 9; the number system used in everyday life"}, {"id": "term_4", "type": "mcq", "question": "What is the definition of <b>Hexadecimal</b>?", "options": ["A base-16 number system using the symbols 0\u20139 and A\u2013F", "Red Green Blue colour system used by computer screens to create colours by mixing different amounts of red, green, and blue", "American Standard Code for Information Interchange; an 8-bit character set representing up to 256 characters", "A base-2 number system using only the digits 0 and 1"], "correct": 0, "explanation": "A base-16 number system using the symbols 0\u20139 and A\u2013F"}, {"id": "term_5", "type": "mcq", "question": "What is the definition of <b>Bit</b>?", "options": ["The smallest unit of data; a single binary digit (0 or 1)", "A group of 8 bits", "A tiny dot that makes up a digital image; the smallest element of a display screen", "Discrete data that has only two values: 1 and 0; also called binary data"], "correct": 0, "explanation": "The smallest unit of data; a single binary digit (0 or 1)"}, {"id": "term_6", "type": "mcq", "question": "What is the definition of <b>Nibble</b>?", "options": ["Red Green Blue colour system used by computer screens to create colours by mixing different amounts of red, green, and blue", "A group of 4 bits", "The number of sound samples taken per second, measured in hertz (Hz); a common rate is 44.1 kHz", "The smallest unit of data; a single binary digit (0 or 1)"], "correct": 1, "explanation": "A group of 4 bits"}, {"id": "term_7", "type": "mcq", "question": "What is the definition of <b>Byte</b>?", "options": ["The number of bits used to represent the colour of each pixel; higher colour depth means more colours", "A group of 8 bits", "A lossless compression algorithm for images that groups repeating pixels and stores the colour and count", "Moving binary values in a register to the left or right; left shift multiplies by 2, right shift divides by 2"], "correct": 1, "explanation": "A group of 8 bits"}, {"id": "term_8", "type": "mcq", "question": "What is the definition of <b>Register</b>?", "options": ["A 16-bit character set capable of representing approximately 65,000 characters from many languages and symbols", "The number of pixels wide and pixels high that make up an image; higher resolution means more detail", "A small, fast storage location inside the CPU where binary data is stored and processed", "Discrete data that has only two values: 1 and 0; also called binary data"], "correct": 2, "explanation": "A small, fast storage location inside the CPU where binary data is stored and processed"}, {"id": "term_9", "type": "mcq", "question": "What is the definition of <b>Logic gate</b>?", "options": ["A tiny electronic component in a computer that processes digital data", "A small, fast storage location inside the CPU where binary data is stored and processed", "Discrete data that has only two values: 1 and 0; also called binary data", "A compression method that reduces file size without permanently removing any data; the original can be perfectly recreated"], "correct": 0, "explanation": "A tiny electronic component in a computer that processes digital data"}, {"id": "term_10", "type": "mcq", "question": "What is the definition of <b>Overflow error</b>?", "options": ["A group of 8 bits", "A base-2 number system using only the digits 0 and 1", "A lossy compression technique for sound that removes sounds the human ear cannot perceive; used in MP3", "An error that occurs when the result of a calculation is too large to be stored in the available number of bits"], "correct": 3, "explanation": "An error that occurs when the result of a calculation is too large to be stored in the available number of bits"}, {"id": "term_11", "type": "mcq", "question": "What is the definition of <b>Logical binary shift</b>?", "options": ["The process of reducing the size of a file to save storage space and reduce transmission time", "A group of 4 bits", "Moving binary values in a register to the left or right; left shift multiplies by 2, right shift divides by 2", "A lossless compression algorithm for images that groups repeating pixels and stores the colour and count"], "correct": 2, "explanation": "Moving binary values in a register to the left or right; left shift multiplies by 2, right shift divides by 2"}, {"id": "term_12", "type": "mcq", "question": "What is the definition of <b>Two&#x27;s complement</b>?", "options": ["Data that provides information about other data, such as the dimensions and resolution of an image", "A method of representing negative numbers in binary by inverting all bits and adding 1", "A tiny dot that makes up a digital image; the smallest element of a display screen", "A compression method that permanently removes unnecessary data from the file; reduces quality"], "correct": 1, "explanation": "A method of representing negative numbers in binary by inverting all bits and adding 1"}, {"id": "term_13", "type": "mcq", "question": "What is the definition of <b>Character set</b>?", "options": ["The number of sound samples taken per second, measured in hertz (Hz); a common rate is 44.1 kHz", "A defined list of characters recognised by a computer, where each character is assigned a unique binary code", "Discrete data that has only two values: 1 and 0; also called binary data", "A lossy compression technique for sound that removes sounds the human ear cannot perceive; used in MP3"], "correct": 1, "explanation": "A defined list of characters recognised by a computer, where each character is assigned a unique binary code"}, {"id": "term_14", "type": "mcq", "question": "What is the definition of <b>ASCII</b>?", "options": ["The smallest unit of data; a single binary digit (0 or 1)", "American Standard Code for Information Interchange; an 8-bit character set representing up to 256 characters", "A method of representing negative numbers in binary by inverting all bits and adding 1", "A 16-bit character set capable of representing approximately 65,000 characters from many languages and symbols"], "correct": 1, "explanation": "American Standard Code for Information Interchange; an 8-bit character set representing up to 256 characters"}, {"id": "term_15", "type": "mcq", "question": "What is the definition of <b>Unicode</b>?", "options": ["A base-10 number system using the digits 0 to 9; the number system used in everyday life", "A compression method that permanently removes unnecessary data from the file; reduces quality", "A lossless compression algorithm for images that groups repeating pixels and stores the colour and count", "A 16-bit character set capable of representing approximately 65,000 characters from many languages and symbols"], "correct": 3, "explanation": "A 16-bit character set capable of representing approximately 65,000 characters from many languages and symbols"}, {"id": "term_16", "type": "mcq", "question": "What is the definition of <b>Pixel</b>?", "options": ["A tiny electronic component in a computer that processes digital data", "A tiny dot that makes up a digital image; the smallest element of a display screen", "A small, fast storage location inside the CPU where binary data is stored and processed", "A base-16 number system using the symbols 0\u20139 and A\u2013F"], "correct": 1, "explanation": "A tiny dot that makes up a digital image; the smallest element of a display screen"}, {"id": "term_17", "type": "mcq", "question": "What is the definition of <b>Resolution</b>?", "options": ["A 16-bit character set capable of representing approximately 65,000 characters from many languages and symbols", "The process of recording sound at set time intervals to convert it into digital data", "A tiny electronic component in a computer that processes digital data", "The number of pixels wide and pixels high that make up an image; higher resolution means more detail"], "correct": 3, "explanation": "The number of pixels wide and pixels high that make up an image; higher resolution means more detail"}, {"id": "term_18", "type": "mcq", "question": "What is the definition of <b>Colour depth</b>?", "options": ["The number of bits used to represent the colour of each pixel; higher colour depth means more colours", "A base-16 number system using the symbols 0\u20139 and A\u2013F", "The process of reducing the size of a file to save storage space and reduce transmission time", "A compression method that permanently removes unnecessary data from the file; reduces quality"], "correct": 0, "explanation": "The number of bits used to represent the colour of each pixel; higher colour depth means more colours"}, {"id": "term_19", "type": "mcq", "question": "What is the definition of <b>Metadata</b>?", "options": ["Data that provides information about other data, such as the dimensions and resolution of an image", "The process of reducing the size of a file to save storage space and reduce transmission time", "The smallest unit of data; a single binary digit (0 or 1)", "A method of representing negative numbers in binary by inverting all bits and adding 1"], "correct": 0, "explanation": "Data that provides information about other data, such as the dimensions and resolution of an image"}, {"id": "term_20", "type": "mcq", "question": "What is the definition of <b>RGB</b>?", "options": ["A lossless compression algorithm for images that groups repeating pixels and stores the colour and count", "Red Green Blue colour system used by computer screens to create colours by mixing different amounts of red, green, and blue", "Discrete data that has only two values: 1 and 0; also called binary data", "A small, fast storage location inside the CPU where binary data is stored and processed"], "correct": 1, "explanation": "Red Green Blue colour system used by computer screens to create colours by mixing different amounts of red, green, and blue"}, {"id": "term_21", "type": "mcq", "question": "What is the definition of <b>Sound sampling</b>?", "options": ["The process of recording sound at set time intervals to convert it into digital data", "The number of bits used to represent the colour of each pixel; higher colour depth means more colours", "Moving binary values in a register to the left or right; left shift multiplies by 2, right shift divides by 2", "The number of pixels wide and pixels high that make up an image; higher resolution means more detail"], "correct": 0, "explanation": "The process of recording sound at set time intervals to convert it into digital data"}, {"id": "term_22", "type": "mcq", "question": "What is the definition of <b>Sample rate</b>?", "options": ["The smallest unit of data; a single binary digit (0 or 1)", "The number of pixels wide and pixels high that make up an image; higher resolution means more detail", "The number of sound samples taken per second, measured in hertz (Hz); a common rate is 44.1 kHz", "American Standard Code for Information Interchange; an 8-bit character set representing up to 256 characters"], "correct": 2, "explanation": "The number of sound samples taken per second, measured in hertz (Hz); a common rate is 44.1 kHz"}, {"id": "term_23", "type": "mcq", "question": "What is the definition of <b>Sample resolution</b>?", "options": ["The number of bits used to represent each sound sample; higher resolution means more accurate recording", "A base-10 number system using the digits 0 to 9; the number system used in everyday life", "A group of 8 bits", "An error that occurs when the result of a calculation is too large to be stored in the available number of bits"], "correct": 0, "explanation": "The number of bits used to represent each sound sample; higher resolution means more accurate recording"}, {"id": "term_24", "type": "mcq", "question": "What is the definition of <b>Compression</b>?", "options": ["A base-16 number system using the symbols 0\u20139 and A\u2013F", "The process of reducing the size of a file to save storage space and reduce transmission time", "A method of representing negative numbers in binary by inverting all bits and adding 1", "The number of sound samples taken per second, measured in hertz (Hz); a common rate is 44.1 kHz"], "correct": 1, "explanation": "The process of reducing the size of a file to save storage space and reduce transmission time"}, {"id": "term_25", "type": "mcq", "question": "What is the definition of <b>Lossy compression</b>?", "options": ["Red Green Blue colour system used by computer screens to create colours by mixing different amounts of red, green, and blue", "The number of bits used to represent the colour of each pixel; higher colour depth means more colours", "A compression method that permanently removes unnecessary data from the file; reduces quality", "A group of 4 bits"], "correct": 2, "explanation": "A compression method that permanently removes unnecessary data from the file; reduces quality"}, {"id": "term_26", "type": "mcq", "question": "What is the definition of <b>Lossless compression</b>?", "options": ["A continuous stream of data, such as what we see, hear, feel, and smell", "A lossless compression algorithm for images that groups repeating pixels and stores the colour and count", "A base-10 number system using the digits 0 to 9; the number system used in everyday life", "A compression method that reduces file size without permanently removing any data; the original can be perfectly recreated"], "correct": 3, "explanation": "A compression method that reduces file size without permanently removing any data; the original can be perfectly recreated"}, {"id": "term_27", "type": "mcq", "question": "What is the definition of <b>Perceptual music shaping</b>?", "options": ["A group of 4 bits", "A lossy compression technique for sound that removes sounds the human ear cannot perceive; used in MP3", "The number of pixels wide and pixels high that make up an image; higher resolution means more detail", "A compression method that permanently removes unnecessary data from the file; reduces quality"], "correct": 1, "explanation": "A lossy compression technique for sound that removes sounds the human ear cannot perceive; used in MP3"}, {"id": "term_28", "type": "mcq", "question": "What is the definition of <b>Run length encoding (RLE)</b>?", "options": ["American Standard Code for Information Interchange; an 8-bit character set representing up to 256 characters", "A lossless compression algorithm for images that groups repeating pixels and stores the colour and count", "The number of bits used to represent each sound sample; higher resolution means more accurate recording", "A small, fast storage location inside the CPU where binary data is stored and processed"], "correct": 1, "explanation": "A lossless compression algorithm for images that groups repeating pixels and stores the colour and count"}], "freeform": [{"id": "qa_0", "type": "freeform", "question": "Can you think of three examples of analogue data?", "answer": "Examples include: (1) the sound of someone speaking, (2) the colours and shapes you see when looking at a landscape, (3) the temperature you feel on your skin. Any continuous stream of sensory information is analogue data.", "marks": null}, {"id": "qa_1", "type": "freeform", "question": "Why is analogue data described as continuous data?", "answer": "Analogue data is continuous because it flows as a constant, unbroken stream of values. It does not have distinct, separate steps \u2014 it varies smoothly over time. For example, a sound wave changes continuously in amplitude.", "marks": null}, {"id": "qa_2", "type": "freeform", "question": "What is the largest denary number that can be created with a 4-bit binary number?", "answer": "1111 in binary = 8 + 4 + 2 + 1 = 15. The largest denary number is 15.", "marks": null}, {"id": "qa_3", "type": "freeform", "question": "Convert the denary number 6 to a 4-bit binary number.", "answer": "6 in binary: 8? No (0), 4? Yes (1, remainder 2), 2? Yes (1, remainder 0), 1? No (0). Result: 0110.", "marks": null}, {"id": "qa_4", "type": "freeform", "question": "Convert the denary number 9 to a 4-bit binary number.", "answer": "9 in binary: 8? Yes (1, remainder 1), 4? No (0), 2? No (0), 1? Yes (1, remainder 0). Result: 1001.", "marks": null}, {"id": "qa_5", "type": "freeform", "question": "Convert the denary number 58 to an 8-bit binary number.", "answer": "58: 128? No, 64? No, 32? Yes (rem 26), 16? Yes (rem 10), 8? Yes (rem 2), 4? No, 2? Yes (rem 0), 1? No. Result: 00111010.", "marks": null}, {"id": "qa_6", "type": "freeform", "question": "Convert the denary number 123 to an 8-bit binary number.", "answer": "123: 128? No, 64? Yes (rem 59), 32? Yes (rem 27), 16? Yes (rem 11), 8? Yes (rem 3), 4? No, 2? Yes (rem 1), 1? Yes (rem 0). Result: 01111011.", "marks": null}, {"id": "qa_7", "type": "freeform", "question": "What is the largest denary number that can be created with an 8-bit binary number?", "answer": "11111111 = 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255.", "marks": null}, {"id": "qa_8", "type": "freeform", "question": "Convert the 8-bit binary number 01100011 to a denary number.", "answer": "Place values with 1: 64 + 32 + 2 + 1 = 99.", "marks": null}, {"id": "qa_9", "type": "freeform", "question": "Convert the hexadecimal number A2 to a binary number.", "answer": "A = 10 = 1010 in binary; 2 = 0010 in binary. Result: 10100010.", "marks": null}, {"id": "qa_10", "type": "freeform", "question": "Convert the binary number 100111010001 to hexadecimal.", "answer": "Split into 4-bit groups from right: 1001 | 1101 | 0001. 1001 = 9, 1101 = 13 = D, 0001 = 1. Result: 9D1.", "marks": null}, {"id": "qa_11", "type": "freeform", "question": "Convert the denary number 350 to hexadecimal.", "answer": "350 in binary (using 16-bit or grouping): 350 = 256 + 64 + 16 + 8 + 4 + 2 = 101011110. Pad to 12 bits: 0001 0101 1110. Group: 0001 = 1, 0101 = 5, 1110 = 14 = E. Result: 15E.", "marks": null}, {"id": "qa_12", "type": "freeform", "question": "Convert the hexadecimal 3AC to a denary number.", "answer": "3 = 0011, A = 1010, C = 1100. Binary: 001110101100. Denary: 512 + 256 + 128 + 32 + 8 + 4 = 940.", "marks": null}, {"id": "qa_13", "type": "freeform", "question": "Add the 8-bit binary values 00011001 and 01000011.", "answer": "00011001 (25) + 01000011 (67) = 01011100 (92).", "marks": null}, {"id": "qa_14", "type": "freeform", "question": "Add the 8-bit binary values 00100110 and 01010111.", "answer": "00100110 (38) + 01010111 (87) = 01111101 (125).", "marks": null}, {"id": "qa_15", "type": "freeform", "question": "Perform two logical shifts to the right on the binary number 11101100.", "answer": "First right shift: 01110110. Second right shift: 00111011. The original denary value was 236; after two right shifts the value is 59 (approximately 236 / 4 = 59).", "marks": null}, {"id": "qa_16", "type": "freeform", "question": "Explain how two&#x27;s complement is used to represent negative numbers in binary.", "answer": "To represent a negative number using two&#x27;s complement: (1) write the positive version of the number in binary, (2) invert all the bits (change 1s to 0s and 0s to 1s), (3) add 1 to the inverted result. For example, to represent -35: 35 = 00100011, invert = 11011100, add 1 = 11011101.", "marks": null}, {"id": "qa_17", "type": "freeform", "question": "Calculate the file size in bytes of an image that is 800 pixels wide, 600 pixels high, with a colour depth of 24 bits.", "answer": "File size = 800 x 600 x 24 = 11,520,000 bits. In bytes: 11,520,000 / 8 = 1,440,000 bytes = 1,440,000 / 1024 = approximately 1,406 KiB = approximately 1.37 MiB.", "marks": null}, {"id": "qa_18", "type": "freeform", "question": "A sound file has a sample rate of 44,100 Hz, a sample resolution of 16 bits, and a duration of 3 minutes. Calculate the file size in MiB.", "answer": "Duration in seconds = 3 x 60 = 180 seconds. File size = 44,100 x 16 x 180 = 127,008,000 bits. In bytes: 127,008,000 / 8 = 15,876,000 bytes. In KiB: 15,876,000 / 1024 \u2248 15,503.9 KiB. In MiB: 15,503.9 / 1024 \u2248 15.14 MiB.", "marks": null}], "truefalse": [{"id": "tf_0", "type": "truefalse", "statement": "Example: Convert denary 13 to 4-bit binary", "correct": true, "explanation": "Example: Convert denary 13 to 4-bit binary"}, {"id": "tf_1", "type": "truefalse", "statement": "Example: Convert denary 150 to 8-bit binary", "correct": true, "explanation": "Example: Convert denary 150 to 8-bit binary"}, {"id": "tf_2", "type": "truefalse", "statement": "Quick check: If the denary number is odd, the last binary digit should be 1. If it is even, the last binary digit should be 0.", "correct": true, "explanation": "Quick check: If the denary number is odd, the last binary digit should be 1. If it is even, the last binary digit should be 0."}, {"id": "tf_3", "type": "truefalse", "statement": "Example: Convert binary 1010 to denary", "correct": true, "explanation": "Example: Convert binary 1010 to denary"}, {"id": "tf_4", "type": "truefalse", "statement": "Example: Convert binary 10011001 to denary", "correct": true, "explanation": "Example: Convert binary 10011001 to denary"}, {"id": "tf_5", "type": "truefalse", "statement": "Hexadecimal is a base-16 number system that uses 16 symbols: the digits 0\u20139 and the letters A\u2013F.", "correct": true, "explanation": "Hexadecimal is a base-16 number system that uses 16 symbols: the digits 0\u20139 and the letters A\u2013F."}, {"id": "tf_6", "type": "truefalse", "statement": "Denary \u2192 Hexadecimal: First convert the denary number to 8-bit binary, then split the 8-bit binary number into two groups of 4 bits. Convert each 4-bit group to its hexadecimal symbol.", "correct": true, "explanation": "Denary \u2192 Hexadecimal: First convert the denary number to 8-bit binary, then split the 8-bit binary number into two groups of 4 bits. Convert each 4-bit group to its hexadecimal symbol."}, {"id": "tf_7", "type": "truefalse", "statement": "Example: Convert denary 201 to hexadecimal", "correct": true, "explanation": "Example: Convert denary 201 to hexadecimal"}, {"id": "tf_8", "type": "truefalse", "statement": "Hexadecimal \u2192 Binary: Convert each hexadecimal symbol to its 4-bit binary equivalent and join them together.", "correct": true, "explanation": "Hexadecimal \u2192 Binary: Convert each hexadecimal symbol to its 4-bit binary equivalent and join them together."}, {"id": "tf_9", "type": "truefalse", "statement": "Example: Convert hexadecimal 5E to binary", "correct": true, "explanation": "Example: Convert hexadecimal 5E to binary"}, {"id": "tf_10", "type": "truefalse", "statement": "Hexadecimal \u2192 Denary: Convert to binary first, then add the place values.", "correct": true, "explanation": "Hexadecimal \u2192 Denary: Convert to binary first, then add the place values."}, {"id": "tf_11", "type": "truefalse", "statement": "Example: Convert hexadecimal 5E to denary", "correct": true, "explanation": "Example: Convert hexadecimal 5E to denary"}, {"id": "tf_12", "type": "truefalse", "statement": "Example: Add 10010100 and 00011110", "correct": true, "explanation": "Example: Add 10010100 and 00011110"}, {"id": "tf_13", "type": "truefalse", "statement": "Example: Adding 10010100 (148) and 10010110 (150) gives a result of 298, which exceeds 255 \u2014 the 9th bit overflows and the result stored would be incorrect.", "correct": true, "explanation": "Example: Adding 10010100 (148) and 10010110 (150) gives a result of 298, which exceeds 255 \u2014 the 9th bit overflows and the result stored would be incorrect."}, {"id": "tf_14", "type": "truefalse", "statement": "Example: 00101100 (denary 44) shifted left by 1 \u2192 01011000 (denary 88)", "correct": true, "explanation": "Example: 00101100 (denary 44) shifted left by 1 \u2192 01011000 (denary 88)"}]};
+let allQ = [];
+let idx = 0;
+let score = 0;
+let answered = 0;
+
+function init() {
+  allQ = [...(DATA.mcq||[]), ...(DATA.truefalse||[]), ...(DATA.freeform||[])];
+  if (!allQ.length) { document.getElementById('scoreDisplay').textContent = 'No questions available.'; return; }
+  idx = 0; score = 0; answered = 0;
+  renderAll();
+  showQuestion(0);
+}
+
+function renderAll() {
+  const c = document.getElementById('questionsContainer');
+  c.innerHTML = '';
+  allQ.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = 'q_' + i;
+
+    let typeLabel = q.type === 'mcq' ? 'Multiple Choice' : q.type === 'truefalse' ? 'True / False' : 'Written Answer';
+    let inner = `<div class="q-number">Question ${i+1} of ${allQ.length}</div>`;
+    inner += `<span class="q-type">${typeLabel}</span>`;
+
+    if (q.type === 'mcq') {
+      inner += `<div class="q-text">${q.question}</div>`;
+      q.options.forEach((o, oi) => {
+        inner += `<button class="option" data-qi="${i}" data-oi="${oi}" onclick="answerMCQ(${i},${oi})">${o}</button>`;
+      });
+      inner += `<div class="explanation" id="expl_${i}">${q.explanation||''}</div>`;
+    } else if (q.type === 'truefalse') {
+      inner += `<div class="q-text">${q.statement}</div>`;
+      inner += `<div class="tf-btns"><button data-qi="${i}" data-val="true" onclick="answerTF(${i},true)">True</button>`;
+      inner += `<button data-qi="${i}" data-val="false" onclick="answerTF(${i},false)">False</button></div>`;
+      inner += `<div class="explanation" id="expl_${i}">Correct statement: ${q.explanation||''}</div>`;
+    } else {
+      inner += `<div class="q-text">${q.question}</div>`;
+      inner += `<textarea class="freeform-area" id="ans_${i}" placeholder="Type your answer..."></textarea>`;
+      inner += `<div class="explanation" id="expl_${i}"><b>Model answer:</b> ${q.answer||''}</div>`;
+    }
+
+    inner += `<div class="nav-btns">`;
+    if (q.type === 'freeform') inner += `<button class="btn-reveal" onclick="revealFreeform(${i})">Show Answer</button>`;
+    else inner += `<span></span>`;
+    inner += `<button class="btn-next" id="next_${i}" onclick="nextQ()">${i===allQ.length-1?'Finish':'Next →'}</button>`;
+    inner += `</div>`;
+
+    card.innerHTML = inner;
+    c.appendChild(card);
+  });
+}
+
+function showQuestion(n) {
+  document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
+  const card = document.getElementById('q_' + n);
+  if (card) card.classList.add('active');
+  document.getElementById('progressFill').style.width = ((n+1)/allQ.length*100) + '%';
+  document.getElementById('scoreDisplay').textContent = `Question ${n+1} of ${allQ.length} · Score: ${score}/${answered}`;
+}
+
+function answerMCQ(qi, oi) {
+  const q = allQ[qi];
+  const btns = document.querySelectorAll(`button[data-qi="${qi}"]`);
+  btns.forEach(b => { b.disabled = true; b.classList.remove('selected'); });
+  btns[oi].classList.add('selected');
+  if (oi === q.correct) { btns[oi].classList.add('correct'); score++; }
+  else { btns[oi].classList.add('wrong'); btns[q.correct].classList.add('correct'); }
+  answered++;
+  document.getElementById('expl_' + qi).classList.add('show');
+  document.getElementById('scoreDisplay').textContent = `Question ${qi+1} of ${allQ.length} · Score: ${score}/${answered}`;
+}
+
+function answerTF(qi, val) {
+  const q = allQ[qi];
+  const btns = document.querySelectorAll(`button[data-qi="${qi}"]`);
+  btns.forEach(b => b.disabled = true);
+  const correct = val === q.correct;
+  btns.forEach(b => {
+    if (String(b.dataset.val) === String(q.correct)) b.classList.add('correct');
+    if (b.dataset.val === String(val) && !correct) b.classList.add('wrong');
+  });
+  if (correct) score++;
+  answered++;
+  document.getElementById('expl_' + qi).classList.add('show');
+  document.getElementById('scoreDisplay').textContent = `Question ${qi+1} of ${allQ.length} · Score: ${score}/${answered}`;
+}
+
+function revealFreeform(qi) {
+  document.getElementById('expl_' + qi).classList.add('show');
+  answered++;
+  document.getElementById('scoreDisplay').textContent = `Question ${qi+1} of ${allQ.length} · Score: ${score}/${answered}`;
+}
+
+function nextQ() {
+  idx++;
+  if (idx >= allQ.length) { showResults(); return; }
+  showQuestion(idx);
+}
+
+function showResults() {
+  document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
+  const pct = answered > 0 ? Math.round(score/answered*100) : 0;
+  document.getElementById('finalScore').textContent = pct + '%';
+  let grade = pct >= 90 ? 'Outstanding!' : pct >= 70 ? 'Great work!' : pct >= 50 ? 'Good effort — keep studying!' : 'Review the material and try again.';
+  document.getElementById('gradeText').textContent = grade + ` (${score}/${answered} correct)`;
+  document.getElementById('resultsCard').style.display = 'block';
+  document.getElementById('progressFill').style.width = '100%';
+  // Save to localStorage for dashboard
+  try {
+    const sessions = JSON.parse(localStorage.getItem('sf_quiz_sessions') || '[]');
+    sessions.push({ date: new Date().toISOString(), score, total: answered, pct });
+    localStorage.setItem('sf_quiz_sessions', JSON.stringify(sessions));
+  } catch(e) {}
+}
+
+function restart() {
+  document.getElementById('resultsCard').style.display = 'none';
+  init();
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 — Data Representation: Complete Study Guide — Exam Simulator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #f5f7fa; color: #1a1a1a; line-height: 1.6; }
+  .header { background: #1a3c5e; color: white; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 100; }
+  .header h1 { font-size: 22px; }
+  .timer { font-size: 28px; font-weight: 700; margin-top: 8px; font-variant-numeric: tabular-nums; }
+  .timer.warning { color: #ff9800; }
+  .timer.danger { color: #ff4444; animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { opacity: 0.5; } }
+  .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+  .exam-info {
+    background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center;
+  }
+  .exam-info .stat { display: inline-block; margin: 0 16px; }
+  .exam-info .stat-val { font-size: 24px; font-weight: 700; color: #2a5f8f; }
+  .exam-info .stat-label { font-size: 12px; color: #888; }
+  .q-card {
+    background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .q-card .q-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
+  .q-card .q-num { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .q-card .q-marks { font-size: 12px; color: #2a5f8f; font-weight: 600; }
+  .q-card .q-text { font-size: 16px; margin-bottom: 12px; }
+  .q-card textarea {
+    width: 100%; min-height: 100px; padding: 12px; border: 2px solid #e0e0e0;
+    border-radius: 8px; font-family: inherit; font-size: 14px; resize: vertical;
+  }
+  .q-card textarea:focus { border-color: #2a5f8f; outline: none; }
+  .answer-reveal {
+    margin-top: 12px; padding: 12px 16px; background: #f0faf0;
+    border-left: 3px solid #2d8a4e; border-radius: 4px; font-size: 14px;
+    display: none; white-space: pre-wrap;
+  }
+  .answer-reveal.show { display: block; }
+  .controls { text-align: center; margin: 24px 0; }
+  .controls button {
+    padding: 12px 32px; border: none; border-radius: 8px; font-size: 16px;
+    font-weight: 600; cursor: pointer; margin: 0 8px;
+  }
+  .btn-start { background: #2a5f8f; color: white; }
+  .btn-start:hover { background: #1a3c5e; }
+  .btn-submit { background: #2d8a4e; color: white; }
+  .btn-submit:hover { background: #1d6a3e; }
+  .btn-show { background: #e0e0e0; color: #333; }
+  .btn-show:hover { background: #d0d0d0; }
+  .hidden { display: none; }
+  .results {
+    background: white; border-radius: 12px; padding: 32px; text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .results h2 { font-size: 28px; margin-bottom: 16px; }
+  .results .time-taken { font-size: 18px; color: #555; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Chapter 1 — Data Representation: Complete Study Guide — Exam Simulator</h1>
+  <div class="timer" id="timer">--:--</div>
+</div>
+<div class="container">
+  <div class="exam-info" id="examInfo">
+    <div class="stat"><div class="stat-val" id="totalQ">-</div><div class="stat-label">Questions</div></div>
+    <div class="stat"><div class="stat-val" id="totalM">-</div><div class="stat-label">Total Marks</div></div>
+    <div class="stat"><div class="stat-val" id="timeLimit">-</div><div class="stat-label">Minutes</div></div>
+    <div style="margin-top:16px;">
+      <button class="btn-start" id="btnStart" onclick="startExam()">Start Exam</button>
+    </div>
+  </div>
+  <div id="questionsArea" class="hidden"></div>
+  <div id="submitArea" class="hidden controls">
+    <button class="btn-submit" onclick="submitExam()">Submit &amp; View Answers</button>
+  </div>
+  <div id="resultsArea" class="hidden"></div>
+</div>
+<script>
+const EXAM = {"title": "Chapter 1 \u2014 Data Representation: Complete Study Guide", "timeMinutes": 45, "questions": [{"id": "Question CS1.01", "question": "Can you think of three examples of analogue data?", "answer": "Examples include: (1) the sound of someone speaking, (2) the colours and shapes you see when looking at a landscape, (3) the temperature you feel on your skin. Any continuous stream of sensory information is analogue data.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.02", "question": "Why is analogue data described as continuous data?", "answer": "Analogue data is continuous because it flows as a constant, unbroken stream of values. It does not have distinct, separate steps \u2014 it varies smoothly over time. For example, a sound wave changes continuously in amplitude.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.03", "question": "What is the largest denary number that can be created with a 4-bit binary number?", "answer": "1111 in binary = 8 + 4 + 2 + 1 = 15. The largest denary number is 15.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.04", "question": "Convert the denary number 6 to a 4-bit binary number.", "answer": "6 in binary: 8? No (0), 4? Yes (1, remainder 2), 2? Yes (1, remainder 0), 1? No (0). Result: 0110.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.05", "question": "Convert the denary number 9 to a 4-bit binary number.", "answer": "9 in binary: 8? Yes (1, remainder 1), 4? No (0), 2? No (0), 1? Yes (1, remainder 0). Result: 1001.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.06", "question": "Convert the denary number 58 to an 8-bit binary number.", "answer": "58: 128? No, 64? No, 32? Yes (rem 26), 16? Yes (rem 10), 8? Yes (rem 2), 4? No, 2? Yes (rem 0), 1? No. Result: 00111010.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.07", "question": "Convert the denary number 123 to an 8-bit binary number.", "answer": "123: 128? No, 64? Yes (rem 59), 32? Yes (rem 27), 16? Yes (rem 11), 8? Yes (rem 3), 4? No, 2? Yes (rem 1), 1? Yes (rem 0). Result: 01111011.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.08", "question": "What is the largest denary number that can be created with an 8-bit binary number?", "answer": "11111111 = 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.09", "question": "Convert the 8-bit binary number 01100011 to a denary number.", "answer": "Place values with 1: 64 + 32 + 2 + 1 = 99.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.10", "question": "Convert the hexadecimal number A2 to a binary number.", "answer": "A = 10 = 1010 in binary; 2 = 0010 in binary. Result: 10100010.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.11", "question": "Convert the binary number 100111010001 to hexadecimal.", "answer": "Split into 4-bit groups from right: 1001 | 1101 | 0001. 1001 = 9, 1101 = 13 = D, 0001 = 1. Result: 9D1.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.12", "question": "Convert the denary number 350 to hexadecimal.", "answer": "350 in binary (using 16-bit or grouping): 350 = 256 + 64 + 16 + 8 + 4 + 2 = 101011110. Pad to 12 bits: 0001 0101 1110. Group: 0001 = 1, 0101 = 5, 1110 = 14 = E. Result: 15E.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.13", "question": "Convert the hexadecimal 3AC to a denary number.", "answer": "3 = 0011, A = 1010, C = 1100. Binary: 001110101100. Denary: 512 + 256 + 128 + 32 + 8 + 4 = 940.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.14", "question": "Add the 8-bit binary values 00011001 and 01000011.", "answer": "00011001 (25) + 01000011 (67) = 01011100 (92).", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.15", "question": "Add the 8-bit binary values 00100110 and 01010111.", "answer": "00100110 (38) + 01010111 (87) = 01111101 (125).", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.16", "question": "Describe what happens in a logical binary shift.", "answer": "In a logical binary shift, each bit in the binary number is moved a set number of places to the left or to the right within the register. Bits that move beyond the edge of the register are lost, and the empty positions created are filled with 0s. A left shift multiplies the value by 2 per shift; a right shift divides the value by 2 per shift.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.17", "question": "Perform two logical shifts to the right on the binary number 11101100.", "answer": "First right shift: 01110110. Second right shift: 00111011. The original denary value was 236; after two right shifts the value is 59 (approximately 236 / 4 = 59).", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.18", "question": "Explain how two&#x27;s complement is used to represent negative numbers in binary.", "answer": "To represent a negative number using two&#x27;s complement: (1) write the positive version of the number in binary, (2) invert all the bits (change 1s to 0s and 0s to 1s), (3) add 1 to the inverted result. For example, to represent -35: 35 = 00100011, invert = 11011100, add 1 = 11011101.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.19", "question": "What is the difference between ASCII and Unicode character sets?", "answer": "ASCII uses 8 bits per character and can represent up to 256 characters (sufficient for English and basic symbols). Unicode uses 16 bits per character and can represent approximately 65,000 characters, including characters from many different languages, alphabets, and symbols such as emojis. Unicode was developed because some languages need more than 256 characters.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.20", "question": "Explain how increasing the resolution and colour depth of an image affects the file size.", "answer": "Increasing the resolution means the image is made up of more pixels, so more data needs to be stored, resulting in a larger file. Increasing the colour depth means each pixel requires more bits to represent its colour, so more data per pixel needs to be stored, also resulting in a larger file. Both changes increase the file size.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.21", "question": "Calculate the file size in bytes of an image that is 800 pixels wide, 600 pixels high, with a colour depth of 24 bits.", "answer": "File size = 800 x 600 x 24 = 11,520,000 bits. In bytes: 11,520,000 / 8 = 1,440,000 bytes = 1,440,000 / 1024 = approximately 1,406 KiB = approximately 1.37 MiB.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.22", "question": "What is sound sampling? What effect does increasing the sample rate have on a recording?", "answer": "Sound sampling is the process of recording sound by measuring the sound wave at set time intervals. Increasing the sample rate means more samples are taken per second, which captures more data points of the original sound wave. This produces a more accurate digital representation of the original sound, but increases the file size because more data must be stored.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.23", "question": "Why do you think lossy compression is not commonly used on text files?", "answer": "Lossy compression permanently removes data. In a text file, every character carries meaning \u2014 removing even one character could change or destroy the meaning of the text. Therefore lossy compression would corrupt the content. Text files should use lossless compression instead, where no data is lost.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.24", "question": "Will lossy compression affect the quality of an image? Why?", "answer": "Yes. Lossy compression reduces the quality of an image because it permanently removes data, such as reducing the colour depth (removing colours the human eye may not easily distinguish) or reducing the resolution (reducing the number of pixels). Once this data is removed, it cannot be recovered, so the image will be of lower quality than the original.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.25", "question": "Will lossy compression affect the quality of a sound recording? Why?", "answer": "Yes. Lossy compression reduces the quality of a sound recording because it permanently removes data. It may remove sounds that are outside the range of human hearing, or remove quieter sounds masked by louder ones (perceptual music shaping). It may also reduce the sample rate or sample resolution. These removals mean the reproduced sound will be less accurate than the original.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.26", "question": "Explain how run length encoding (RLE) works as a lossless compression method for images.", "answer": "RLE compresses image data by grouping together consecutive pixels that are the same colour and storing the colour value along with the number of times it repeats. For example, instead of storing &quot;white, white, white, yellow, yellow&quot;, RLE stores &quot;3W, 2Y&quot;. The image resolution is stored alongside the data so the computer can reconstruct the image. No data is lost \u2014 the original image can be perfectly recreated.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.27", "question": "A sound file has a sample rate of 44,100 Hz, a sample resolution of 16 bits, and a duration of 3 minutes. Calculate the file size in MiB.", "answer": "Duration in seconds = 3 x 60 = 180 seconds. File size = 44,100 x 16 x 180 = 127,008,000 bits. In bytes: 127,008,000 / 8 = 15,876,000 bytes. In KiB: 15,876,000 / 1024 \u2248 15,503.9 KiB. In MiB: 15,503.9 / 1024 \u2248 15.14 MiB.", "marks": 2, "hasImage": false, "imagePath": null}, {"id": "Question CS1.28", "question": "State three benefits of compressing a file.", "answer": "(1) Less storage space is needed to store the file. (2) It takes less time to transmit the file from one device to another. (3) It is quicker to upload and download the file, and less bandwidth is needed.\n\n---\n\n## 5. Exam Focus \u2014 Ranked by Importance\n\n1. Binary-denary-hexadecimal conversions \u2014 You must be able to convert fluently between all three number systems. Know the place values for 4-bit, 8-bit, and 16-bit binary. Know that each hex digit maps to exactly 4 binary bits. Practice converting in both directions.\n\n2. Binary addition and overflow \u2014 Know the four rules of binary addition. Be able to add two 8-bit binary numbers and identify when an overflow error occurs (result &gt; 255 for 8-bit). Understand what causes overflow and its consequences.\n\n3. Image and sound file size calculation", "marks": 2, "hasImage": false, "imagePath": null}], "totalMarks": 56};
+let timerInterval = null;
+let secondsLeft = 0;
+let startTime = null;
+
+document.getElementById('totalQ').textContent = EXAM.questions.length;
+document.getElementById('totalM').textContent = EXAM.totalMarks;
+document.getElementById('timeLimit').textContent = EXAM.timeMinutes;
+
+function startExam() {
+  document.getElementById('btnStart').classList.add('hidden');
+  document.getElementById('questionsArea').classList.remove('hidden');
+  document.getElementById('submitArea').classList.remove('hidden');
+  secondsLeft = EXAM.timeMinutes * 60;
+  startTime = Date.now();
+  renderQuestions();
+  timerInterval = setInterval(tick, 1000);
+  tick();
+}
+
+function tick() {
+  secondsLeft--;
+  const m = Math.floor(secondsLeft / 60);
+  const s = secondsLeft % 60;
+  const el = document.getElementById('timer');
+  el.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  el.className = 'timer' + (secondsLeft < 300 ? (secondsLeft < 60 ? ' danger' : ' warning') : '');
+  if (secondsLeft <= 0) { clearInterval(timerInterval); submitExam(); }
+}
+
+function renderQuestions() {
+  const area = document.getElementById('questionsArea');
+  area.innerHTML = '';
+  EXAM.questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'q-card';
+    div.innerHTML = `
+      <div class="q-header">
+        <span class="q-num">Question ${i+1} — ${q.id}</span>
+        <span class="q-marks">[${q.marks} marks]</span>
+      </div>
+      <div class="q-text">${q.question}</div>
+      <textarea id="ans_${i}" placeholder="Write your answer here..."></textarea>
+      <div class="answer-reveal" id="reveal_${i}"><b>Model Answer:</b><br>${q.answer}</div>
+    `;
+    area.appendChild(div);
+  });
+}
+
+function submitExam() {
+  clearInterval(timerInterval);
+  const elapsed = Math.round((Date.now() - startTime) / 1000);
+  const m = Math.floor(elapsed / 60);
+  const s = elapsed % 60;
+
+  document.getElementById('submitArea').classList.add('hidden');
+  document.querySelectorAll('.answer-reveal').forEach(el => el.classList.add('show'));
+  document.querySelectorAll('textarea').forEach(el => el.disabled = true);
+  document.getElementById('timer').textContent = 'DONE';
+  document.getElementById('timer').className = 'timer';
+
+  const results = document.getElementById('resultsArea');
+  results.classList.remove('hidden');
+  results.innerHTML = `
+    <div class="results">
+      <h2>Exam Complete</h2>
+      <div class="time-taken">Time taken: ${m}m ${s}s</div>
+      <p style="margin-top:12px;color:#555;">Model answers shown below each question. Review your responses.</p>
+    </div>
+  `;
+
+  try {
+    const sessions = JSON.parse(localStorage.getItem('sf_exam_sessions') || '[]');
+    sessions.push({ date: new Date().toISOString(), questions: EXAM.questions.length, totalMarks: EXAM.totalMarks, timeSec: elapsed });
+    localStorage.setItem('sf_exam_sessions', JSON.stringify(sessions));
+  } catch(e) {}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>StudyForge Study Guide</title>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 1.5cm 1.8cm;
+  }
+  body {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: #000000;
+  }
+  h1 {
+    font-size: 20pt;
+    color: #000000;
+    border-bottom: 2px solid #1a3c5e;
+    padding-bottom: 4px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-size: 15pt;
+    color: #000000;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 12pt;
+    color: #000000;
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
+  h4 {
+    font-size: 11pt;
+    color: #000000;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+  p { margin: 4px 0; }
+  strong { color: #000000; }
+  ul, ol { margin: 4px 0 4px 18px; padding: 0; }
+  li { margin-bottom: 2px; }
+  code {
+    background: #f0f4f8;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 9.5pt;
+  }
+  blockquote {
+    border-left: 3px solid #2a5f8f;
+    margin: 6px 0;
+    padding: 6px 14px;
+    background: #f8fafc;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 6px 0;
+    font-size: 10.5pt;
+  }
+  th, td {
+    border: 1px solid #999;
+    padding: 4px 6px;
+    text-align: left;
+  }
+  th {
+    background: #2a5f8f;
+    color: white;
+  }
+  tr:nth-child(even) { background: #f8fafc; }
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+  }
+  .cover {
+    text-align: center;
+    padding-top: 60px;
+    page-break-after: always;
+  }
+  .cover h1 {
+    font-size: 32pt;
+    border: none;
+    color: #000000;
+    margin-bottom: 8px;
+  }
+  .cover .subtitle {
+    font-size: 16pt;
+    color: #333333;
+    margin-top: 6px;
+  }
+  .cover .meta {
+    font-size: 11pt;
+    color: #555555;
+    margin-top: 30px;
+  }
+  img {
+    max-width: 50%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 4px 0;
+    display: block;
+  }
+  .figure {
+    text-align: center;
+    margin: 8px 0;
+    page-break-inside: avoid;
+  }
+  .figure img {
+    margin: 0 auto 4px auto;
+    max-width: 50%;
+  }
+  .figure-caption {
+    font-size: 9pt;
+    color: #333333;
+    font-style: italic;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+<div style="position:sticky;top:0;background:#1a3c5e;color:white;padding:10px 20px;text-align:center;z-index:999;font-family:Arial,sans-serif;font-size:14px;">StudyForge &mdash; <a href="study_guide.pdf" download style="color:white;text-decoration:underline;font-weight:bold;">PDF</a> &middot; <a href="study_guide.mp4" download style="color:white;text-decoration:underline;">Video</a> &middot; <a href="quiz.html" style="color:white;text-decoration:underline;">Interactive Quiz</a> &middot; <a href="cheat_sheet.pdf" style="color:white;text-decoration:underline;">Cheat Sheet</a> &middot; <a href="exam_simulator.html" style="color:white;text-decoration:underline;">Exam Simulator</a></div>
+<div class="cover">
+  <h1>StudyForge</h1>
+  <div class="subtitle"></div>
+  <div class="subtitle">CS1 Data Representation</div>
+  <div class="meta">Pages </div>
+  <div class="meta">Comprehensive Exam Preparation Guide</div>
+</div>
+<h1>Chapter 1 — Data Representation: Complete Study Guide</h1>
+
+<h2>1. Introduction</h2>
+
+<p>All data that a computer processes must be in <strong>binary</strong> (digital) form. This chapter covers how different types of data — numbers, text, images, and sound — are represented in binary, how to convert between number systems, how to manipulate binary numbers, and how data is measured and compressed.</p>
+
+<hr>
+
+<h2>1.1 Binary and Hexadecimal</h2>
+
+<h3>Analogue and Digital Data</h3>
+
+<p>Humans process <strong>analogue data</strong> — a continuous stream of information from our senses (sight, hearing, touch, smell). Computers, however, are made up of very small <strong>logic gates</strong> that can only process <strong>digital data</strong>. Digital data is discrete data that only has two values: <strong>1</strong> and <strong>0</strong>. This type of data is also called <strong>binary data</strong>. Any data that we want a computer to process must first be converted into digital (binary) form. Digital data is stored in <strong>registers</strong>.</p>
+
+<h3>Number Systems</h3>
+
+<h4>Denary (Base-10)</h4>
+<p>In our daily lives we mostly use the <strong>denary</strong> number system. This is a base-10 system that uses the digits 0–9. The place values in denary are ones, tens, hundreds, thousands, etc. Each place value increases by a power of 10.</p>
+
+<p>For example, the denary number 123 means: 1 hundred + 2 tens + 3 ones = 123.</p>
+
+<h4>Binary (Base-2)</h4>
+<p>Computers use the <strong>binary</strong> number system. This is a base-2 system that uses only the digits <strong>0</strong> and <strong>1</strong>. The place values in binary increase by powers of 2.</p>
+
+<p><strong>4-bit binary place values:</strong></p>
+
+<table>
+  <tr>
+    <th>8</th>
+    <th>4</th>
+    <th>2</th>
+    <th>1</th>
+  </tr>
+</table>
+
+<p><strong>8-bit binary place values:</strong></p>
+
+<table>
+  <tr>
+    <th>128</th>
+    <th>64</th>
+    <th>32</th>
+    <th>16</th>
+    <th>8</th>
+    <th>4</th>
+    <th>2</th>
+    <th>1</th>
+  </tr>
+</table>
+
+<h3>Converting Denary to Binary</h3>
+
+<p>To convert a denary number to binary, compare the denary number to each binary place value from left to right:</p>
+<ol>
+  <li>If the denary number is <strong>greater than or equal to</strong> the place value, write a <strong>1</strong> and subtract the place value from the denary number.</li>
+  <li>If the denary number is <strong>less than</strong> the place value, write a <strong>0</strong>.</li>
+  <li>Continue until all place values have been checked.</li>
+</ol>
+
+<p><strong>Example: Convert denary 13 to 4-bit binary</strong></p>
+<ul>
+  <li>13 >= 8? Yes → write 1, remainder = 13 - 8 = 5</li>
+  <li>5 >= 4? Yes → write 1, remainder = 5 - 4 = 1</li>
+  <li>1 >= 2? No → write 0</li>
+  <li>1 >= 1? Yes → write 1, remainder = 0</li>
+  <li>Result: <strong>1101</strong></li>
+</ul>
+
+<p><strong>Example: Convert denary 150 to 8-bit binary</strong></p>
+<ul>
+  <li>150 >= 128? Yes → 1, remainder = 22</li>
+  <li>22 >= 64? No → 0</li>
+  <li>22 >= 32? No → 0</li>
+  <li>22 >= 16? Yes → 1, remainder = 6</li>
+  <li>6 >= 8? No → 0</li>
+  <li>6 >= 4? Yes → 1, remainder = 2</li>
+  <li>2 >= 2? Yes → 1, remainder = 0</li>
+  <li>0 >= 1? No → 0</li>
+  <li>Result: <strong>10010110</strong></li>
+</ul>
+
+<p><strong>Quick check:</strong> If the denary number is odd, the last binary digit should be 1. If it is even, the last binary digit should be 0.</p>
+
+<h3>Converting Binary to Denary</h3>
+
+<p>Add together all the place values where there is a <strong>1</strong>.</p>
+
+<p><strong>Example: Convert binary 1010 to denary</strong></p>
+<ul>
+  <li>Place values with 1: 8 + 2 = <strong>10</strong></li>
+</ul>
+
+<p><strong>Example: Convert binary 10011001 to denary</strong></p>
+<ul>
+  <li>Place values with 1: 128 + 16 + 8 + 1 = <strong>153</strong></li>
+</ul>
+
+<h3>Maximum Values</h3>
+<ul>
+  <li>The largest denary number with a <strong>4-bit</strong> binary number is 1111 = 8 + 4 + 2 + 1 = <strong>15</strong></li>
+  <li>The largest denary number with an <strong>8-bit</strong> binary number is 11111111 = 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = <strong>255</strong></li>
+  <li>The largest denary number with a <strong>16-bit</strong> binary number is <strong>65,535</strong></li>
+</ul>
+
+<h3>Hexadecimal (Base-16)</h3>
+
+<p><strong>Hexadecimal</strong> is a base-16 number system that uses 16 symbols: the digits 0–9 and the letters A–F.</p>
+
+<table>
+  <tr>
+    <th>Denary</th>
+    <th>0</th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+    <th>5</th>
+    <th>6</th>
+    <th>7</th>
+    <th>8</th>
+    <th>9</th>
+    <th>10</th>
+    <th>11</th>
+    <th>12</th>
+    <th>13</th>
+    <th>14</th>
+    <th>15</th>
+  </tr>
+  <tr>
+    <td>Hex</td>
+    <td>0</td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td>A</td>
+    <td>B</td>
+    <td>C</td>
+    <td>D</td>
+    <td>E</td>
+    <td>F</td>
+  </tr>
+</table>
+
+<p>The reason for using A–F is so that denary values 10–15 can each be represented by a single symbol.</p>
+
+<h3>Converting Between Denary, Binary, and Hexadecimal</h3>
+
+<p><strong>Denary → Hexadecimal:</strong> First convert the denary number to 8-bit binary, then split the 8-bit binary number into two groups of 4 bits. Convert each 4-bit group to its hexadecimal symbol.</p>
+
+<p><strong>Example: Convert denary 201 to hexadecimal</strong></p>
+<ol>
+  <li>201 in binary = 11001001</li>
+  <li>Split: 1100 | 1001</li>
+  <li>1100 = 8 + 4 = 12 = <strong>C</strong>; 1001 = 8 + 1 = 9 = <strong>9</strong></li>
+  <li>Result: <strong>C9</strong></li>
+</ol>
+
+<p><strong>Hexadecimal → Binary:</strong> Convert each hexadecimal symbol to its 4-bit binary equivalent and join them together.</p>
+
+<p><strong>Example: Convert hexadecimal 5E to binary</strong></p>
+<ol>
+  <li>5 = 0101; E (14) = 1110</li>
+  <li>Result: <strong>01011110</strong></li>
+</ol>
+
+<p><strong>Hexadecimal → Denary:</strong> Convert to binary first, then add the place values.</p>
+
+<p><strong>Example: Convert hexadecimal 5E to denary</strong></p>
+<ol>
+  <li>Binary: 01011110</li>
+  <li>64 + 16 + 8 + 4 + 2 = <strong>94</strong></li>
+</ol>
+
+<h3>Why is Hexadecimal Used in Computer Science?</h3>
+
+<p>Programmers often use hexadecimal when writing and analysing programs because:</p>
+<ul>
+  <li>Hexadecimal is a <strong>shorter</strong> way of representing binary, taking up less space</li>
+  <li>Hexadecimal is <strong>easier for a programmer to read</strong>, write, and understand than long binary strings</li>
+  <li>Hexadecimal makes it <strong>easier to debug</strong> and locate errors in data</li>
+</ul>
+
+<p>For example, comparing two long binary values to spot errors is very difficult, but comparing the hexadecimal equivalents is much easier.</p>
+
+<p>Uses of hexadecimal in computing include <strong>MAC addresses</strong>, <strong>HTML colour codes</strong> (RGB values), <strong>memory addresses</strong>, and <strong>error codes</strong>.</p>
+
+<hr>
+
+<h2>1.2 Binary Manipulation and Negative Numbers</h2>
+
+<h3>Binary Addition</h3>
+
+<p>When adding two binary numbers, there are four rules:</p>
+
+<table>
+  <tr>
+    <th>Rule</th>
+    <th>Calculation</th>
+    <th>Result</th>
+    <th>Carry</th>
+  </tr>
+  <tr>
+    <td>Rule 1</td>
+    <td>0 + 0</td>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Rule 2</td>
+    <td>1 + 0 (or 0 + 1)</td>
+    <td>1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Rule 3</td>
+    <td>1 + 1</td>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Rule 4</td>
+    <td>1 + 1 + 1</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+</table>
+
+<p>Work from right to left, applying the rules and carrying when necessary.</p>
+
+<p><strong>Example: Add 10010100 and 00011110</strong></p>
+
+<p>Working from right to left and applying the rules:</p>
+<ul>
+  <li>Result: <strong>10110010</strong></li>
+</ul>
+
+<h3>Overflow Error</h3>
+
+<p>The largest number that can be stored in an 8-bit register is 255. If two 8-bit binary values are added and the result is <strong>greater than 255</strong>, the number cannot fit in the 8-bit register and an <strong>overflow error</strong> occurs. The carry bit has nowhere to go.</p>
+
+<p><strong>Example:</strong> Adding 10010100 (148) and 10010110 (150) gives a result of 298, which exceeds 255 — the 9th bit overflows and the result stored would be incorrect.</p>
+
+<p>Each computer has a predefined limit based on its register size (e.g. 16-bit registers can store up to 65,535).</p>
+
+<h3>Logical Binary Shifts</h3>
+
+<p>A <strong>logical binary shift</strong> moves the binary values in a register to the <strong>left</strong> or to the <strong>right</strong>.</p>
+
+<h4>Left Shift</h4>
+<ul>
+  <li>Each value is moved one place to the <strong>left</strong></li>
+  <li>The leftmost bit is <strong>lost</strong> (removed from the register)</li>
+  <li>The empty position on the <strong>right</strong> is filled with a <strong>0</strong></li>
+  <li>A left shift <strong>multiplies</strong> the number by <strong>2</strong> (for each shift)</li>
+</ul>
+
+<p><strong>Example:</strong> 00101100 (denary 44) shifted left by 1 → 01011000 (denary 88)</p>
+
+<h4>Right Shift</h4>
+<ul>
+  <li>Each value is moved one place to the <strong>right</strong></li>
+  <li>The rightmost bit is <strong>lost</strong> (removed from the register)</li>
+  <li>The empty position on the <strong>left</strong> is filled with a <strong>0</strong></li>
+  <li>A right shift <strong>divides</strong> the number by <strong>2</strong> (for each shift)</li>
+</ul>
+
+<p><strong>Example:</strong> 00101100 (denary 44) shifted right by 1 → 00010110 (denary 22)</p>
+
+<p><strong>Important:</strong> Data can lose its integrity during a logical shift because vital bits can be removed from the register. For example, 11101100 (236) shifted left gives 11011000 (216), not 472 — the leftmost 1 was lost.</p>
+
+<p>Multiple shifts can be performed. Two left shifts multiply by 4 (2 x 2); two right shifts divide by 4.</p>
+
+<h3>Two's Complement (Negative Binary Numbers)</h3>
+
+<p>Binary only has the digits 0 and 1, so a minus symbol cannot be used. The method used to represent negative numbers is called <strong>two's complement</strong>.</p>
+
+<p><strong>Method to find the two's complement of a number:</strong></p>
+<ol>
+  <li>Convert the positive denary number to binary</li>
+  <li><strong>Invert</strong> all the bits (change 1s to 0s and 0s to 1s)</li>
+  <li><strong>Add 1</strong> to the result</li>
+</ol>
+
+<p><strong>Example: Represent -35 in binary using two's complement</strong></p>
+<ol>
+  <li>35 in binary = 00100011</li>
+  <li>Invert: 11011100</li>
+  <li>Add 1: 11011100 + 1 = <strong>11011101</strong></li>
+</ol>
+
+<p>In two's complement, the <strong>most significant bit</strong> (leftmost) acts as the sign bit: 0 means positive, 1 means negative.</p>
+
+<hr>
+
+<h2>1.3 How Computers Represent Text, Images, and Sound</h2>
+
+<h3>Converting Text to Binary</h3>
+
+<p>When a computer converts text to binary, it uses a <strong>character set</strong> — a defined list of characters where each character has a unique binary code.</p>
+
+<h4>ASCII (American Standard Code for Information Interchange)</h4>
+<ul>
+  <li>Uses <strong>8 bits</strong> (1 byte) per character</li>
+  <li>Can represent up to <strong>256</strong> characters (values 0–255)</li>
+  <li>Includes letters (A–Z, a–z), digits (0–9), punctuation, and control characters</li>
+  <li>Example: the letter A is 01000001</li>
+</ul>
+
+<h4>Unicode</h4>
+<ul>
+  <li>Uses <strong>16 bits</strong> (2 bytes) per character</li>
+  <li>Can represent approximately <strong>65,000</strong> characters</li>
+  <li>Includes characters from many different alphabets and languages, as well as symbols such as emojis</li>
+  <li>Unicode was invented because some languages have more than 256 characters</li>
+</ul>
+
+<h3>Converting Images to Binary</h3>
+
+<p>An image is made up of tiny dots called <strong>pixels</strong>.</p>
+
+<ul>
+  <li>In a simple black-and-white image, each pixel is either black (1) or white (0)</li>
+  <li>Most images use many colours; each colour has its own binary value</li>
+  <li>Colours on computer screens are created using the <strong>RGB</strong> (Red, Green, Blue) colour system, which mixes red, green, and blue in different amounts</li>
+</ul>
+
+<p><strong>Resolution</strong> is the number of pixels wide and the number of pixels high that are used to create the image. The type of data that provides information about the image (such as dimensions and resolution) is called <strong>metadata</strong>.</p>
+
+<p><strong>Colour depth</strong> is the number of bits used to represent each colour:</p>
+<ul>
+  <li><strong>8-bit</strong> colour → 256 possible colours</li>
+  <li><strong>16-bit</strong> colour → 65,536 possible colours</li>
+  <li><strong>32-bit</strong> colour → over 4 billion possible colours</li>
+</ul>
+
+<p>The greater the number of bits (colour depth), the greater the range of colours that can be represented, but the larger the file size.</p>
+
+<p><strong>Effects on file size:</strong></p>
+<ul>
+  <li><strong>Increasing resolution</strong> → more pixels → more data → <strong>larger file</strong></li>
+  <li><strong>Increasing colour depth</strong> → more bits per pixel → more data → <strong>larger file</strong></li>
+</ul>
+
+<p><strong>Image file size = resolution (width x height) x colour depth</strong></p>
+
+<h3>Converting Sound to Binary</h3>
+
+<p>Sound is made up of <strong>sound waves</strong>. When sound is recorded, it is measured at set time intervals — a process known as <strong>sound sampling</strong>.</p>
+
+<p><strong>Sample rate</strong> is the number of samples taken per second, measured in <strong>hertz (Hz)</strong>. 1 Hz = 1 sample per second. A common sample rate is <strong>44.1 kHz</strong> (44,100 samples per second).</p>
+
+<p><strong>Sample resolution</strong> (bit depth) is the number of bits used to represent each sample. A common sample resolution is <strong>16-bit</strong>. The higher the sample resolution, the more accurately the loudness and variations in amplitude can be recorded.</p>
+
+<p><strong>Effects on file size and quality:</strong></p>
+<ul>
+  <li><strong>Increasing sample rate</strong> → more samples → more data → <strong>larger file</strong>, but <strong>more accurate</strong> recording</li>
+  <li><strong>Increasing sample resolution</strong> → more bits per sample → more data → <strong>larger file</strong>, but <strong>more accurate</strong> recording</li>
+</ul>
+
+<p><strong>Sound file size = sample rate x sample resolution x duration (in seconds)</strong></p>
+
+<hr>
+
+<h2>1.4 Measuring Data Storage</h2>
+
+<p>Data is measured using the following units:</p>
+
+<table>
+  <tr>
+    <th>Unit</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Bit</td>
+    <td>The smallest unit of data (a single 0 or 1)</td>
+  </tr>
+  <tr>
+    <td>Nibble</td>
+    <td>4 bits</td>
+  </tr>
+  <tr>
+    <td>Byte</td>
+    <td>8 bits</td>
+  </tr>
+  <tr>
+    <td>Kibibyte (KiB)</td>
+    <td>1024 bytes</td>
+  </tr>
+  <tr>
+    <td>Mebibyte (MiB)</td>
+    <td>1024 KiB</td>
+  </tr>
+  <tr>
+    <td>Gibibyte (GiB)</td>
+    <td>1024 MiB</td>
+  </tr>
+  <tr>
+    <td>Tebibyte (TiB)</td>
+    <td>1024 GiB</td>
+  </tr>
+  <tr>
+    <td>Pebibyte (PiB)</td>
+    <td>1024 TiB</td>
+  </tr>
+  <tr>
+    <td>Exbibyte (EiB)</td>
+    <td>1024 PiB</td>
+  </tr>
+</table>
+
+<p>Each unit is <strong>1024 times</strong> the previous unit (because 1024 = 2^10).</p>
+
+<h3>Calculating File Sizes</h3>
+
+<p><strong>Image file size:</strong></p>
+<ul>
+  <li>File size (bits) = width (pixels) x height (pixels) x colour depth (bits)</li>
+  <li>Divide by 8 to get bytes, then by 1024 for KiB, etc.</li>
+</ul>
+
+<p><strong>Sound file size:</strong></p>
+<ul>
+  <li>File size (bits) = sample rate (Hz) x sample resolution (bits) x duration (seconds)</li>
+  <li>Divide by 8 to get bytes, then by 1024 for KiB, etc.</li>
+</ul>
+
+<hr>
+
+<h2>1.5 Data Compression</h2>
+
+<p><strong>Compression</strong> reduces the size of a file. Benefits of compression:</p>
+<ul>
+  <li>Less storage space is needed</li>
+  <li>Less time to transmit the file</li>
+  <li>Quicker to upload and download</li>
+  <li>Less bandwidth is needed to transmit the file over the internet</li>
+</ul>
+
+<h3>Lossy Compression</h3>
+
+<p><strong>Lossy compression</strong> uses an algorithm that finds and permanently removes unnecessary and redundant data from the file. This type of compression is mainly used on <strong>image files</strong> and <strong>sound files</strong>.</p>
+
+<p><strong>For images</strong>, lossy compression can:</p>
+<ul>
+  <li>Reduce the colour depth (remove colours the human eye cannot distinguish)</li>
+  <li>Reduce the resolution (reduce the number of pixels)</li>
+</ul>
+
+<p><strong>For sound</strong>, lossy compression can:</p>
+<ul>
+  <li>Remove sounds that cannot be heard by the human ear</li>
+  <li>Remove softer sounds that are masked by louder sounds played at the same time (this method is called <strong>perceptual music shaping</strong> and is used in the MP3 format)</li>
+  <li>Reduce the sample rate and sample resolution</li>
+</ul>
+
+<p>Lossy compression <strong>reduces the quality</strong> of the file because data is permanently lost. It is <strong>not suitable for text files</strong> because every character is needed to preserve meaning.</p>
+
+<h3>Lossless Compression</h3>
+
+<p><strong>Lossless compression</strong> reduces the file size <strong>without permanently removing any data</strong>. The original file can be perfectly recreated when decompressed.</p>
+
+<p>A common lossless method involves finding <strong>repeating data</strong> and grouping it together using a <strong>lookup table</strong>.</p>
+
+<p><strong>Example:</strong> The message "WHEN IT IS SNOWING HEAVILY LOOK OUTSIDE. LOOK OUTSIDE IT IS SNOWING HEAVILY." can be compressed by storing each unique word once in a lookup table along with its positions. This reduces storage from 62 bytes to 46 bytes (a 26% saving).</p>
+
+<p><strong>Run Length Encoding (RLE)</strong> is a lossless compression algorithm used for images. It groups together <strong>repeating pixels</strong> and stores how many times they occur.</p>
+
+<p><strong>Example:</strong> Instead of storing each pixel colour individually, RLE stores "12W, 3Y, 5W, 2Y, 1R, 2Y, 3W..." — the colour and its count. The resolution is stored with the data so the computer knows the image dimensions when decompressing.</p>
+
+<hr>
+
+<h2>2. Key Equations</h2>
+
+<ul>
+  <li>Image file size (bits) = width (pixels) x height (pixels) x colour depth (bits)</li>
+  <li>Sound file size (bits) = sample rate (Hz) x sample resolution (bits) x duration (seconds)</li>
+  <li>File size in bytes = file size in bits / 8</li>
+  <li>File size in KiB = file size in bytes / 1024</li>
+  <li>Maximum denary value for n bits = 2^n - 1</li>
+  <li>Left shift by 1 = multiply by 2</li>
+  <li>Right shift by 1 = divide by 2</li>
+  <li>Left shift by n = multiply by 2^n</li>
+  <li>Right shift by n = divide by 2^n</li>
+  <li>1 byte = 8 bits</li>
+  <li>1 nibble = 4 bits</li>
+  <li>1 KiB = 1024 bytes</li>
+  <li>1 MiB = 1024 KiB</li>
+</ul>
+
+<hr>
+
+<h2>3. Important Terms and Definitions</h2>
+
+<table>
+  <tr>
+    <th>Term</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td><strong>Analogue data</strong></td>
+    <td>A continuous stream of data, such as what we see, hear, feel, and smell</td>
+  </tr>
+  <tr>
+    <td><strong>Digital data</strong></td>
+    <td>Discrete data that has only two values: 1 and 0; also called binary data</td>
+  </tr>
+  <tr>
+    <td><strong>Binary</strong></td>
+    <td>A base-2 number system using only the digits 0 and 1</td>
+  </tr>
+  <tr>
+    <td><strong>Denary</strong></td>
+    <td>A base-10 number system using the digits 0 to 9; the number system used in everyday life</td>
+  </tr>
+  <tr>
+    <td><strong>Hexadecimal</strong></td>
+    <td>A base-16 number system using the symbols 0–9 and A–F</td>
+  </tr>
+  <tr>
+    <td><strong>Bit</strong></td>
+    <td>The smallest unit of data; a single binary digit (0 or 1)</td>
+  </tr>
+  <tr>
+    <td><strong>Nibble</strong></td>
+    <td>A group of 4 bits</td>
+  </tr>
+  <tr>
+    <td><strong>Byte</strong></td>
+    <td>A group of 8 bits</td>
+  </tr>
+  <tr>
+    <td><strong>Register</strong></td>
+    <td>A small, fast storage location inside the CPU where binary data is stored and processed</td>
+  </tr>
+  <tr>
+    <td><strong>Logic gate</strong></td>
+    <td>A tiny electronic component in a computer that processes digital data</td>
+  </tr>
+  <tr>
+    <td><strong>Overflow error</strong></td>
+    <td>An error that occurs when the result of a calculation is too large to be stored in the available number of bits</td>
+  </tr>
+  <tr>
+    <td><strong>Logical binary shift</strong></td>
+    <td>Moving binary values in a register to the left or right; left shift multiplies by 2, right shift divides by 2</td>
+  </tr>
+  <tr>
+    <td><strong>Two's complement</strong></td>
+    <td>A method of representing negative numbers in binary by inverting all bits and adding 1</td>
+  </tr>
+  <tr>
+    <td><strong>Character set</strong></td>
+    <td>A defined list of characters recognised by a computer, where each character is assigned a unique binary code</td>
+  </tr>
+  <tr>
+    <td><strong>ASCII</strong></td>
+    <td>American Standard Code for Information Interchange; an 8-bit character set representing up to 256 characters</td>
+  </tr>
+  <tr>
+    <td><strong>Unicode</strong></td>
+    <td>A 16-bit character set capable of representing approximately 65,000 characters from many languages and symbols</td>
+  </tr>
+  <tr>
+    <td><strong>Pixel</strong></td>
+    <td>A tiny dot that makes up a digital image; the smallest element of a display screen</td>
+  </tr>
+  <tr>
+    <td><strong>Resolution</strong></td>
+    <td>The number of pixels wide and pixels high that make up an image; higher resolution means more detail</td>
+  </tr>
+  <tr>
+    <td><strong>Colour depth</strong></td>
+    <td>The number of bits used to represent the colour of each pixel; higher colour depth means more colours</td>
+  </tr>
+  <tr>
+    <td><strong>Metadata</strong></td>
+    <td>Data that provides information about other data, such as the dimensions and resolution of an image</td>
+  </tr>
+  <tr>
+    <td><strong>RGB</strong></td>
+    <td>Red Green Blue colour system used by computer screens to create colours by mixing different amounts of red, green, and blue</td>
+  </tr>
+  <tr>
+    <td><strong>Sound sampling</strong></td>
+    <td>The process of recording sound at set time intervals to convert it into digital data</td>
+  </tr>
+  <tr>
+    <td><strong>Sample rate</strong></td>
+    <td>The number of sound samples taken per second, measured in hertz (Hz); a common rate is 44.1 kHz</td>
+  </tr>
+  <tr>
+    <td><strong>Sample resolution</strong></td>
+    <td>The number of bits used to represent each sound sample; higher resolution means more accurate recording</td>
+  </tr>
+  <tr>
+    <td><strong>Compression</strong></td>
+    <td>The process of reducing the size of a file to save storage space and reduce transmission time</td>
+  </tr>
+  <tr>
+    <td><strong>Lossy compression</strong></td>
+    <td>A compression method that permanently removes unnecessary data from the file; reduces quality</td>
+  </tr>
+  <tr>
+    <td><strong>Lossless compression</strong></td>
+    <td>A compression method that reduces file size without permanently removing any data; the original can be perfectly recreated</td>
+  </tr>
+  <tr>
+    <td><strong>Perceptual music shaping</strong></td>
+    <td>A lossy compression technique for sound that removes sounds the human ear cannot perceive; used in MP3</td>
+  </tr>
+  <tr>
+    <td><strong>Run length encoding (RLE)</strong></td>
+    <td>A lossless compression algorithm for images that groups repeating pixels and stores the colour and count</td>
+  </tr>
+</table>
+
+<hr>
+
+<h2>4. Practice Questions</h2>
+
+<h3>Question CS1.01</h3>
+<p>Can you think of three examples of analogue data?</p>
+
+<p><strong>Answer:</strong> Examples include: (1) the sound of someone speaking, (2) the colours and shapes you see when looking at a landscape, (3) the temperature you feel on your skin. Any continuous stream of sensory information is analogue data.</p>
+
+<h3>Question CS1.02</h3>
+<p>Why is analogue data described as continuous data?</p>
+
+<p><strong>Answer:</strong> Analogue data is continuous because it flows as a constant, unbroken stream of values. It does not have distinct, separate steps — it varies smoothly over time. For example, a sound wave changes continuously in amplitude.</p>
+
+<h3>Question CS1.03</h3>
+<p>What is the largest denary number that can be created with a 4-bit binary number?</p>
+
+<p><strong>Answer:</strong> 1111 in binary = 8 + 4 + 2 + 1 = 15. The largest denary number is 15.</p>
+
+<h3>Question CS1.04</h3>
+<p>Convert the denary number 6 to a 4-bit binary number.</p>
+
+<p><strong>Answer:</strong> 6 in binary: 8? No (0), 4? Yes (1, remainder 2), 2? Yes (1, remainder 0), 1? No (0). Result: <strong>0110</strong>.</p>
+
+<h3>Question CS1.05</h3>
+<p>Convert the denary number 9 to a 4-bit binary number.</p>
+
+<p><strong>Answer:</strong> 9 in binary: 8? Yes (1, remainder 1), 4? No (0), 2? No (0), 1? Yes (1, remainder 0). Result: <strong>1001</strong>.</p>
+
+<h3>Question CS1.06</h3>
+<p>Convert the denary number 58 to an 8-bit binary number.</p>
+
+<p><strong>Answer:</strong> 58: 128? No, 64? No, 32? Yes (rem 26), 16? Yes (rem 10), 8? Yes (rem 2), 4? No, 2? Yes (rem 0), 1? No. Result: <strong>00111010</strong>.</p>
+
+<h3>Question CS1.07</h3>
+<p>Convert the denary number 123 to an 8-bit binary number.</p>
+
+<p><strong>Answer:</strong> 123: 128? No, 64? Yes (rem 59), 32? Yes (rem 27), 16? Yes (rem 11), 8? Yes (rem 3), 4? No, 2? Yes (rem 1), 1? Yes (rem 0). Result: <strong>01111011</strong>.</p>
+
+<h3>Question CS1.08</h3>
+<p>What is the largest denary number that can be created with an 8-bit binary number?</p>
+
+<p><strong>Answer:</strong> 11111111 = 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = <strong>255</strong>.</p>
+
+<h3>Question CS1.09</h3>
+<p>Convert the 8-bit binary number 01100011 to a denary number.</p>
+
+<p><strong>Answer:</strong> Place values with 1: 64 + 32 + 2 + 1 = <strong>99</strong>.</p>
+
+<h3>Question CS1.10</h3>
+<p>Convert the hexadecimal number A2 to a binary number.</p>
+
+<p><strong>Answer:</strong> A = 10 = 1010 in binary; 2 = 0010 in binary. Result: <strong>10100010</strong>.</p>
+
+<h3>Question CS1.11</h3>
+<p>Convert the binary number 100111010001 to hexadecimal.</p>
+
+<p><strong>Answer:</strong> Split into 4-bit groups from right: 1001 | 1101 | 0001. 1001 = 9, 1101 = 13 = D, 0001 = 1. Result: <strong>9D1</strong>.</p>
+
+<h3>Question CS1.12</h3>
+<p>Convert the denary number 350 to hexadecimal.</p>
+
+<p><strong>Answer:</strong> 350 in binary (using 16-bit or grouping): 350 = 256 + 64 + 16 + 8 + 4 + 2 = 101011110. Pad to 12 bits: 0001 0101 1110. Group: 0001 = 1, 0101 = 5, 1110 = 14 = E. Result: <strong>15E</strong>.</p>
+
+<h3>Question CS1.13</h3>
+<p>Convert the hexadecimal 3AC to a denary number.</p>
+
+<p><strong>Answer:</strong> 3 = 0011, A = 1010, C = 1100. Binary: 001110101100. Denary: 512 + 256 + 128 + 32 + 8 + 4 = <strong>940</strong>.</p>
+
+<h3>Question CS1.14</h3>
+<p>Add the 8-bit binary values 00011001 and 01000011.</p>
+
+<p><strong>Answer:</strong> 00011001 (25) + 01000011 (67) = <strong>01011100</strong> (92).</p>
+
+<h3>Question CS1.15</h3>
+<p>Add the 8-bit binary values 00100110 and 01010111.</p>
+
+<p><strong>Answer:</strong> 00100110 (38) + 01010111 (87) = <strong>01111101</strong> (125).</p>
+
+<h3>Question CS1.16</h3>
+<p>Describe what happens in a logical binary shift.</p>
+
+<p><strong>Answer:</strong> In a logical binary shift, each bit in the binary number is moved a set number of places to the left or to the right within the register. Bits that move beyond the edge of the register are lost, and the empty positions created are filled with 0s. A left shift multiplies the value by 2 per shift; a right shift divides the value by 2 per shift.</p>
+
+<h3>Question CS1.17</h3>
+<p>Perform two logical shifts to the right on the binary number 11101100.</p>
+
+<p><strong>Answer:</strong> First right shift: 01110110. Second right shift: <strong>00111011</strong>. The original denary value was 236; after two right shifts the value is 59 (approximately 236 / 4 = 59).</p>
+
+<h3>Question CS1.18</h3>
+<p>Explain how two's complement is used to represent negative numbers in binary.</p>
+
+<p><strong>Answer:</strong> To represent a negative number using two's complement: (1) write the positive version of the number in binary, (2) invert all the bits (change 1s to 0s and 0s to 1s), (3) add 1 to the inverted result. For example, to represent -35: 35 = 00100011, invert = 11011100, add 1 = 11011101.</p>
+
+<h3>Question CS1.19</h3>
+<p>What is the difference between ASCII and Unicode character sets?</p>
+
+<p><strong>Answer:</strong> ASCII uses 8 bits per character and can represent up to 256 characters (sufficient for English and basic symbols). Unicode uses 16 bits per character and can represent approximately 65,000 characters, including characters from many different languages, alphabets, and symbols such as emojis. Unicode was developed because some languages need more than 256 characters.</p>
+
+<h3>Question CS1.20</h3>
+<p>Explain how increasing the resolution and colour depth of an image affects the file size.</p>
+
+<p><strong>Answer:</strong> Increasing the resolution means the image is made up of more pixels, so more data needs to be stored, resulting in a larger file. Increasing the colour depth means each pixel requires more bits to represent its colour, so more data per pixel needs to be stored, also resulting in a larger file. Both changes increase the file size.</p>
+
+<h3>Question CS1.21</h3>
+<p>Calculate the file size in bytes of an image that is 800 pixels wide, 600 pixels high, with a colour depth of 24 bits.</p>
+
+<p><strong>Answer:</strong> File size = 800 x 600 x 24 = 11,520,000 bits. In bytes: 11,520,000 / 8 = 1,440,000 bytes = 1,440,000 / 1024 = approximately 1,406 KiB = approximately 1.37 MiB.</p>
+
+<h3>Question CS1.22</h3>
+<p>What is sound sampling? What effect does increasing the sample rate have on a recording?</p>
+
+<p><strong>Answer:</strong> Sound sampling is the process of recording sound by measuring the sound wave at set time intervals. Increasing the sample rate means more samples are taken per second, which captures more data points of the original sound wave. This produces a more accurate digital representation of the original sound, but increases the file size because more data must be stored.</p>
+
+<h3>Question CS1.23</h3>
+<p>Why do you think lossy compression is not commonly used on text files?</p>
+
+<p><strong>Answer:</strong> Lossy compression permanently removes data. In a text file, every character carries meaning — removing even one character could change or destroy the meaning of the text. Therefore lossy compression would corrupt the content. Text files should use lossless compression instead, where no data is lost.</p>
+
+<h3>Question CS1.24</h3>
+<p>Will lossy compression affect the quality of an image? Why?</p>
+
+<p><strong>Answer:</strong> Yes. Lossy compression reduces the quality of an image because it permanently removes data, such as reducing the colour depth (removing colours the human eye may not easily distinguish) or reducing the resolution (reducing the number of pixels). Once this data is removed, it cannot be recovered, so the image will be of lower quality than the original.</p>
+
+<h3>Question CS1.25</h3>
+<p>Will lossy compression affect the quality of a sound recording? Why?</p>
+
+<p><strong>Answer:</strong> Yes. Lossy compression reduces the quality of a sound recording because it permanently removes data. It may remove sounds that are outside the range of human hearing, or remove quieter sounds masked by louder ones (perceptual music shaping). It may also reduce the sample rate or sample resolution. These removals mean the reproduced sound will be less accurate than the original.</p>
+
+<h3>Question CS1.26</h3>
+<p>Explain how run length encoding (RLE) works as a lossless compression method for images.</p>
+
+<p><strong>Answer:</strong> RLE compresses image data by grouping together consecutive pixels that are the same colour and storing the colour value along with the number of times it repeats. For example, instead of storing "white, white, white, yellow, yellow", RLE stores "3W, 2Y". The image resolution is stored alongside the data so the computer can reconstruct the image. No data is lost — the original image can be perfectly recreated.</p>
+
+<h3>Question CS1.27</h3>
+<p>A sound file has a sample rate of 44,100 Hz, a sample resolution of 16 bits, and a duration of 3 minutes. Calculate the file size in MiB.</p>
+
+<p><strong>Answer:</strong> Duration in seconds = 3 x 60 = 180 seconds. File size = 44,100 x 16 x 180 = 127,008,000 bits. In bytes: 127,008,000 / 8 = 15,876,000 bytes. In KiB: 15,876,000 / 1024 ≈ 15,503.9 KiB. In MiB: 15,503.9 / 1024 ≈ <strong>15.14 MiB</strong>.</p>
+
+<h3>Question CS1.28</h3>
+<p>State three benefits of compressing a file.</p>
+
+<p><strong>Answer:</strong> (1) Less storage space is needed to store the file. (2) It takes less time to transmit the file from one device to another. (3) It is quicker to upload and download the file, and less bandwidth is needed.</p>
+
+<hr>
+
+<h2>5. Exam Focus — Ranked by Importance</h2>
+
+<ol>
+  <li><strong>Binary-denary-hexadecimal conversions</strong> — You must be able to convert fluently between all three number systems. Know the place values for 4-bit, 8-bit, and 16-bit binary. Know that each hex digit maps to exactly 4 binary bits. Practice converting in both directions.</li>
+</ol>
+
+<ol>
+  <li><strong>Binary addition and overflow</strong> — Know the four rules of binary addition. Be able to add two 8-bit binary numbers and identify when an overflow error occurs (result > 255 for 8-bit). Understand what causes overflow and its consequences.</li>
+</ol>
+
+<ol>
+  <li><strong>Image and sound file size calculations</strong> — Calculate image file size using width x height x colour depth, and sound file size using sample rate x sample resolution x duration. Be able to convert between bits, bytes, KiB, and MiB. Understand how changing resolution, colour depth, sample rate, or sample resolution affects quality and file size.</li>
+</ol>
+
+<ol>
+  <li><strong>Lossy vs lossless compression</strong> — Clearly explain the difference: lossy permanently removes data (reduces quality but smaller files), lossless preserves all data (no quality loss). Know examples of each (MP3 uses lossy with perceptual music shaping; RLE is lossless). Explain why lossy is unsuitable for text.</li>
+</ol>
+
+<ol>
+  <li><strong>Logical binary shifts and two's complement</strong> — Know that left shift multiplies by 2 and right shift divides by 2. Understand that bits can be lost during shifts. Be able to perform two's complement: convert to binary, invert, add 1.</li>
+</ol>
+
+<ol>
+  <li><strong>Character sets: ASCII vs Unicode</strong> — Know that ASCII uses 8 bits (256 characters) and Unicode uses 16 bits (~65,000 characters). Explain why Unicode was needed (multiple languages, emojis).</li>
+</ol>
+
+<hr>
+
+<h2>Quick Revision Card</h2>
+
+<table>
+  <tr>
+    <th>Topic</th>
+    <th>Key Fact</th>
+  </tr>
+  <tr>
+    <td>Binary is base</td>
+    <td>2 (digits: 0 and 1)</td>
+  </tr>
+  <tr>
+    <td>Denary is base</td>
+    <td>10 (digits: 0–9)</td>
+  </tr>
+  <tr>
+    <td>Hexadecimal is base</td>
+    <td>16 (symbols: 0–9, A–F)</td>
+  </tr>
+  <tr>
+    <td>Max 8-bit value</td>
+    <td>255</td>
+  </tr>
+  <tr>
+    <td>Binary addition: 1+1</td>
+    <td>= 10 (write 0, carry 1)</td>
+  </tr>
+  <tr>
+    <td>Left shift x 1</td>
+    <td>Multiplies by 2</td>
+  </tr>
+  <tr>
+    <td>Right shift x 1</td>
+    <td>Divides by 2</td>
+  </tr>
+  <tr>
+    <td>Two's complement</td>
+    <td>Invert bits, then add 1</td>
+  </tr>
+  <tr>
+    <td>ASCII</td>
+    <td>8 bits, up to 256 characters</td>
+  </tr>
+  <tr>
+    <td>Unicode</td>
+    <td>16 bits, ~65,000 characters</td>
+  </tr>
+  <tr>
+    <td>Image file size</td>
+    <td>width x height x colour depth</td>
+  </tr>
+  <tr>
+    <td>Sound file size</td>
+    <td>sample rate x resolution x duration</td>
+  </tr>
+  <tr>
+    <td>Lossy compression</td>
+    <td>Permanently removes data, reduces quality</td>
+  </tr>
+  <tr>
+    <td>Lossless compression</td>
+    <td>No data lost, original can be recreated</td>
+  </tr>
+  <tr>
+    <td>RLE</td>
+    <td>Groups repeating pixels (colour + count)</td>
+  </tr>
+  <tr>
+    <td>1 byte</td>
+    <td>8 bits</td>
+  </tr>
+  <tr>
+    <td>1 KiB</td>
+    <td>1024 bytes</td>
+  </tr>
+</table>
+
+</body>
+</html>
